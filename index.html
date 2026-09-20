@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Password Strength Analyzer</h1>
+        <p>
+            Analyze your password using strength scoring,
+            entropy and pattern detection.
+        </p>
+    </header>
+
+    <!-- Password Input -->
+    <section class="card">
+
+        <label for="password">Enter Password</label>
+
+        <div class="password-box">
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                autocomplete="off"
+            >
+
+            <button id="togglePassword">
+                Show
+            </button>
+        </div>
+
+        <div class="meter">
+            <div id="strengthBar"></div>
+        </div>
+
+        <p id="verdict">Enter a password to begin</p>
+
+    </section>
+
+
+    <!-- Main Results -->
+
+    <div class="results">
+
+        <!-- Score -->
+        <section class="card score-card">
+
+            <h2>Security Score</h2>
+
+            <div class="score">
+                <span id="score">0</span>
+                <small>/100</small>
+            </div>
+
+            <h3 id="scoreVerdict">-</h3>
+
+        </section>
+
+
+        <!-- Entropy -->
+        <section class="card">
+
+            <h2>Estimated Entropy</h2>
+
+            <div class="entropy">
+                <span id="entropy">0</span>
+                <small>bits</small>
+            </div>
+
+            <p id="entropyMessage">
+                Enter a password to calculate entropy.
+            </p>
+
+        </section>
+
+    </div>
+
+
+    <!-- Score Breakdown -->
+
+    <section class="card">
+
+        <h2>Score Breakdown</h2>
+
+        <div class="breakdown">
+
+            <div class="row">
+                <span>Length</span>
+                <span id="lengthScore">0/25</span>
+            </div>
+
+            <div class="progress">
+                <div id="lengthProgress"></div>
+            </div>
+
+
+            <div class="row">
+                <span>Uppercase</span>
+                <span id="upperScore">0/10</span>
+            </div>
+
+            <div class="progress">
+                <div id="upperProgress"></div>
+            </div>
+
+
+            <div class="row">
+                <span>Lowercase</span>
+                <span id="lowerScore">0/10</span>
+            </div>
+
+            <div class="progress">
+                <div id="lowerProgress"></div>
+            </div>
+
+
+            <div class="row">
+                <span>Numbers</span>
+                <span id="numberScore">0/10</span>
+            </div>
+
+            <div class="progress">
+                <div id="numberProgress"></div>
+            </div>
+
+
+            <div class="row">
+                <span>Special Characters</span>
+                <span id="specialScore">0/10</span>
+            </div>
+
+            <div class="progress">
+                <div id="specialProgress"></div>
+            </div>
+
+
+            <div class="row">
+                <span>Entropy</span>
+                <span id="entropyScore">0/25</span>
+            </div>
+
+            <div class="progress">
+                <div id="entropyProgress"></div>
+            </div>
+
+
+            <div class="row penalty-row">
+                <span>Pattern Penalty</span>
+                <span id="penalty">0</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Checklist -->
+
+    <section class="card">
+
+        <h2>Security Checklist</h2>
+
+        <ul id="checklist">
+
+            <li id="checkLength">○ At least 12 characters</li>
+
+            <li id="checkUpper">
+                ○ Contains uppercase letter
+            </li>
+
+            <li id="checkLower">
+                ○ Contains lowercase letter
+            </li>
+
+            <li id="checkNumber">
+                ○ Contains number
+            </li>
+
+            <li id="checkSpecial">
+                ○ Contains special character
+            </li>
+
+            <li id="checkPattern">
+                ○ No obvious patterns
+            </li>
+
+            <li id="checkCommon">
+                ○ Not a common password
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- Suggestions -->
+
+    <section class="card">
+
+        <h2>Security Recommendations</h2>
+
+        <ul id="recommendations">
+            <li>Enter a password to receive recommendations.</li>
+        </ul>
+
+    </section>
+
+
+    <!-- Password Generator -->
+
+    <section class="card generator">
+
+        <h2>Strong Password Generator</h2>
+
+        <div class="generator-controls">
+
+            <label for="passwordLength">
+                Password Length
+            </label>
+
+            <select id="passwordLength">
+                <option value="12">12</option>
+                <option value="16" selected>16</option>
+                <option value="20">20</option>
+                <option value="24">24</option>
+                <option value="32">32</option>
+            </select>
+
+            <button id="generate">
+                Generate Strong Password
+            </button>
+
+        </div>
+
+        <div class="generated-box">
+
+            <input
+                type="text"
+                id="generatedPassword"
+                readonly
+            >
+
+            <button id="copyPassword">
+                Copy
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>
+            Educational password security tool.
+            Passwords are analyzed locally in your browser.
+        </p>
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
